@@ -19,7 +19,9 @@ RUN apt-get update && \
     automake \
     pkg-config \
     jq \
-    meson
+    meson && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/list/*
 
 RUN wget -q https://download.qemu.org/qemu-${QEMU_VERSION}.tar.xz && \
     tar xJf qemu-${QEMU_VERSION}.tar.xz && \
@@ -39,7 +41,9 @@ RUN apt-get update && \
     libvde-dev libvdeplug-dev libvte-2.91-dev libxen-dev liblzo2-dev \
     valgrind xfslibs-dev \
     libnfs-dev libiscsi-dev \
-    gdb-multiarch libssl-dev
+    gdb-multiarch libssl-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/list/*
 
 RUN ./configure --prefix=/usr/local --target-list="riscv64-softmmu loongarch64-softmmu riscv64-linux-user loongarch64-linux-user" --disable-werror
 
