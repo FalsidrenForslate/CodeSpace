@@ -23,10 +23,9 @@ RUN apt-get update && \
 
 RUN wget -q https://download.qemu.org/qemu-${QEMU_VERSION}.tar.xz && \
     tar xJf qemu-${QEMU_VERSION}.tar.xz && \
-    rm qemu-${QEMU_VERSION}.tar.xz && \
-    mv qemu-${QEMU_VERSION} qemu
+    rm qemu-${QEMU_VERSION}.tar.xz
 
-WORKDIR /build/qemu
+WORKDIR /build/qemu-${QEMU_VERSION}
 
 RUN apt-get update && \
     apt-get install -y \
@@ -47,7 +46,7 @@ RUN ./configure --prefix=/usr/local --target-list="riscv64-softmmu loongarch64-s
 RUN make -j$(($(nproc) - 1)) && \
     make install
 
-RUN rm -rf /build/qemu
+RUN rm -rf /build/qemu-${QEMU_VERSION}
 
 
 ENV RUSTUP_HOME=/usr/local/rustup \
