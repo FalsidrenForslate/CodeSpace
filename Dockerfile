@@ -39,7 +39,8 @@ RUN apt-get update && \
     libsasl2-dev libsdl2-dev libseccomp-dev libsnappy-dev libssh-dev \
     libvde-dev libvdeplug-dev libvte-2.91-dev libxen-dev liblzo2-dev \
     valgrind xfslibs-dev \
-    libnfs-dev libiscsi-dev
+    libnfs-dev libiscsi-dev \
+    gdb-multiarch libssl-dev
 
 RUN ./configure --prefix=/usr/local --target-list="riscv64-softmmu loongarch64-softmmu riscv64-linux-user loongarch64-linux-user" --disable-werror
 
