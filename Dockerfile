@@ -18,6 +18,7 @@ RUN apt-get update && \
     autoconf \
     automake \
     pkg-config \
+    jq \
     meson
 
 RUN wget -q https://download.qemu.org/qemu-${QEMU_VERSION}.tar.xz && \
