@@ -42,7 +42,7 @@ RUN apt-get update && \
 
 RUN ./configure --prefix=/usr/local --target-list="riscv64-softmmu loongarch64-softmmu riscv64-linux-user loongarch64-linux-user" --disable-werror
 
-RUN make -j$(($(nproc) - 2)) && \
+RUN make -j$(($(nproc) - 1)) && \
     make install
 
 RUN rm -rf /build/qemu
